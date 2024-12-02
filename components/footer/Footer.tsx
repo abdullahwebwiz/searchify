@@ -1,159 +1,50 @@
-'use client';
-import Link from 'next/link';
 import Image from 'next/image';
-import useSWR from 'swr';
-import {
-  AtSign,
-  Facebook,
-  Instagram,
-  Mail,
-  MapPin,
-  MessageCircleQuestion,
-  Phone,
-  Youtube,
-} from 'lucide-react';
 
-const Footer = () => {
-  const {
-    data: categories,
-    error: categoriesError,
-    isLoading: categoriesLoading,
-  } = useSWR('/api/products/categories');
-
-  const {
-    data: brands,
-    error: brandsError,
-    isLoading: brandsLoading,
-  } = useSWR('/api/products/brands');
-
-  const {
-    data: articles,
-    error: articlesError,
-    isLoading: articlesLoading,
-  } = useSWR('/api/products/blogs');
-  const {
-    data: socialMedia,
-    error: socialMediaError,
-    isLoading: socialMediaLoading,
-  } = useSWR('/api/products/socialMedia');
-
-  if (
-    categoriesLoading ||
-    brandsLoading ||
-    articlesLoading ||
-    socialMediaLoading ||
-    !categories ||
-    !brands ||
-    !articles ||
-    !socialMedia
-  )
-    return (
-      <div className='skeleton h-[304px] w-full rounded-lg lg:h-[536px]' />
-    );
-
+const Footer: React.FC = () => {
   return (
-    <footer className='footer bg-base-200 p-10 text-base-content'>
-      <aside>
+    <footer className='bg-white dark:bg-gray-900'>
+      <div className='container mx-auto flex flex-col items-center justify-between space-y-4 p-6 sm:flex-row sm:space-y-0'>
+        <a href='#'>
         <Image
-          src={'/images/logo.png'}
-          width={60 * 3}
-          height={60}
-          alt={'logo'}
+          src='/logo.png'
+          width={250}
+          height={106}
+          alt='logo'
         />
-        <p className='w-[200px]'>
-        {process.env.NEXT_PUBLIC_APP_DESC}
+        </a>
+
+        <p className='text-sm text-gray-600 dark:text-gray-300'>
+          © Copyright 2021. All Rights Reserved. Made with ❤️ in Pakistan.
         </p>
-      </aside>
-      <nav>
-        <h6 className='footer-title'>Information - Feel free to contact</h6>
-        <Link href={'#'} className='flex items-center'>
-          {socialMedia.phone + ' '}{' '}
-          <Phone size={16} style={{ marginLeft: '5px' }} />
-        </Link>
-        <Link href={'#'} className='flex items-center'>
-          {socialMedia.email + ' '}{' '}
-          <Mail size={16} style={{ marginLeft: '5px' }} />
-        </Link>
-        <Link href={'#'} className='flex items-center'>
-          {socialMedia.address + ' '}
-          <MapPin size={16} style={{ marginLeft: '5px' }} />
-        </Link>
-      </nav>
-      <nav>
-        <h6 className='footer-title'>Categories</h6>
-        {categories.map((category: string) => (
-          <Link
-            key={category}
-            href={`/search?category=${category}`}
-            className='link-hover link'
+
+        <div className='-mx-2 flex'>
+          <a
+            href='https://www.instagram.com/adullahwebwiz/'
+            className='mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400'
+            aria-label='Facebook'
           >
-            {category}
-          </Link>
-        ))}
-      </nav>
-      <nav>
-        <h6 className='footer-title'>Brands</h6>
-        {brands.map((brand: string) => (
-          <Link
-            key={brand}
-            href={`/search?brand=${brand}`}
-            className='link-hover link'
+            <Image
+              src={'/instagram.svg'}
+              width={30}
+              height={30}
+              alt='instagram profile icon'
+            />
+          </a>
+
+          <a
+            href='https://github.com/abdullahwebwiz'
+            className='mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400'
+            aria-label='Github'
           >
-            {brand}
-          </Link>
-        ))}
-      </nav>
-      <nav>
-        <h6 className='footer-title'>Articles</h6>
-        {articles.map((article: any) => (
-          <Link
-            key={article._id}
-            href={`/blog/${article.slug}`}
-            className='link-hover link'
-          >
-            {article.title}
-          </Link>
-        ))}
-      </nav>
-      <nav>
-        <h6 className='footer-title'>Social Media</h6>
-        <Link
-          target='_blank'
-          href={socialMedia.whatsapp}
-          className='link-hover link flex items-center'
-        >
-          WhatsApp{' '}
-          <MessageCircleQuestion size={16} style={{ marginLeft: '5px' }} />
-        </Link>
-        <Link
-          target='_blank'
-          href={socialMedia.facebook}
-          className='link-hover link flex items-center'
-        >
-          Facebook <Facebook size={16} style={{ marginLeft: '5px' }} />
-        </Link>
-        <Link
-          target='_blank'
-          href={socialMedia.instagram}
-          className='link-hover link flex items-center'
-        >
-          Instagram <Instagram size={16} style={{ marginLeft: '5px' }} />
-        </Link>
-        <Link
-          target='_blank'
-          href={socialMedia.youtube}
-          className='link-hover link flex items-center'
-        >
-          YouTube <Youtube size={16} style={{ marginLeft: '5px' }} />
-        </Link>
-        <Link
-          target='_blank'
-          href={socialMedia.tiktok}
-          className='link-hover link flex items-center'
-        >
-          TikTok <AtSign size={16} style={{ marginLeft: '5px' }} />
-        </Link>
-      </nav>
+            <Image
+              src={'/github.svg'}
+              width={30}
+              height={30}
+              alt='github profile icon'
+            />
+          </a>
+        </div>
+      </div>
     </footer>
   );
 };

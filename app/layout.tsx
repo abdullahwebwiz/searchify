@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 
 import Providers from '@/components/Providers';
+import Footer from '@/components/footer/Footer';
+import Header from '@/components/header/Header';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
@@ -16,7 +18,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang='en'>
       <body className={inter.className}>
         <Providers>
+          <Header/>
           <div className='flex min-h-screen flex-col'>{children}</div>
+          <Footer/>
         </Providers>
       </body>
     </html>

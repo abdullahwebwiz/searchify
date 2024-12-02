@@ -1,7 +1,5 @@
-import { AlignJustify } from 'lucide-react';
 import Link from 'next/link';
 import Menu from './Menu';
-import { SearchBox } from './SearchBox';
 import Image from 'next/image';
 
 const Header = () => {

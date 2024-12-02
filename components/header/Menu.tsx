@@ -4,20 +4,18 @@ import { ChevronDown, Moon, ShoppingCart, Sun } from 'lucide-react';
 import Link from 'next/link';
 import { signOut, signIn, useSession } from 'next-auth/react';
 
-import useCartService from '@/lib/hooks/useCartStore';
+
 import useLayoutService from '@/lib/hooks/useLayout';
 
 import { SearchBox } from './SearchBox';
 import { useEffect } from 'react';
 
 const Menu = () => {
-  const { items, init } = useCartService();
   const { data: session } = useSession();
   const { theme, toggleTheme } = useLayoutService();
 
   const signOutHandler = () => {
     signOut({ callbackUrl: '/signin' });
-    init();
   };
 
   const handleClick = () => {

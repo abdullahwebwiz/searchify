@@ -25,7 +25,8 @@ const HistoryPage = () => {
   if (history) {
     const x2 = JSON.parse(history);
     return (
-      <div className='mx-auto max-w-screen-xl px-4 md:px-8'>
+      <>
+            <div className='mx-auto max-w-screen-xl px-4 md:px-8'>
         <div className='max-w-lg'>
           <h3 className='text-xl font-bold text-gray-300 sm:text-2xl'>
             History
@@ -63,6 +64,7 @@ const HistoryPage = () => {
           </table>
         </div>
       </div>
+      </>
     );
   } else {
     return (

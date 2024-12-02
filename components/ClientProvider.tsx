@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { SWRConfig } from 'swr';
 
-import { cartStore } from '@/lib/hooks/useCartStore';
+
 import useLayoutService from '@/lib/hooks/useLayout';
 
 const ClientProvider = ({ children }: { children: React.ReactNode }) => {
@@ -16,19 +16,9 @@ const ClientProvider = ({ children }: { children: React.ReactNode }) => {
     setSelectedTheme(theme);
   }, [theme]);
 
-  const updateStore = () => {
-    cartStore.persist.rehydrate();
-  };
 
-  // cart will be refreshed on cart change  n browser
-  useEffect(() => {
-    document.addEventListener('visibilitychange', updateStore);
-    window.addEventListener('focus', updateStore);
-    return () => {
-      document.removeEventListener('visibilitychange', updateStore);
-      window.removeEventListener('focus', updateStore);
-    };
-  }, []);
+
+
 
   return (
     <SWRConfig

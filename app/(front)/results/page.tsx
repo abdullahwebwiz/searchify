@@ -40,27 +40,30 @@ const ResultPage = () => {
   }, [query]);
 
   useEffect(() => {
+    console.log(process.env.NEXT_PUBLIC_GOOGLE_WEB_SEARCH_URL);
+    console.log(process.env.NEXT_PUBLIC_GOOGLE_WEB_SEARCH_KEY);
+    console.log(process.env.NEXT_PUBLIC_GOOGLE_WEB_SEARCH_HOST);
+
     const fetchData = async () => {
       try {
         const options = {
           method: 'GET',
-          url: 'https://google-web-search1.p.rapidapi.com/',
+          url: process.env.NEXT_PUBLIC_GOOGLE_WEB_SEARCH_URL,
           params: {
             query: query,
-            limit: '10',
+            limit: '20',
             related_keywords: 'true',
           },
           headers: {
             'x-rapidapi-key':
-              '49e5deb775msh9d6dff18330e707p1924e0jsnacf093a432ed',
-            'x-rapidapi-host': 'google-web-search1.p.rapidapi.com',
+            process.env.NEXT_PUBLIC_GOOGLE_WEB_SEARCH_KEY,
+            'x-rapidapi-host': process.env.NEXT_PUBLIC_GOOGLE_WEB_SEARCH_HOST,
           },
         };
 
         const response = await axios.request(options);
 
         let x: any = response?.data;
-        console.log(x?.related_keywords?.spelling_suggestion);
         setSuggestion(
           x?.related_keywords?.spelling_suggestion
             ? x?.related_keywords?.spelling_suggestion
@@ -78,7 +81,6 @@ const ResultPage = () => {
 
   return (
     <>
-      <Header />
       <SearchBox2 query={query} suggestion={suggestion} />
       <AiPanel answer={answer} />
       {/* @ts-ignore */}

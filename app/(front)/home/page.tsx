@@ -1,13 +1,15 @@
-import Header from '@/components/header/Header';
-import SearchBox from '@/components/searchBox/searchBox';
-import ShortCuts from '@/components/shortcuts/Shortcuts';
+import dynamic from 'next/dynamic';
+
+const SearchBox = dynamic(() => import('@/components/searchBox/searchBox'));
+const ShortCuts = dynamic(() => import('@/components/shortcuts/Shortcuts'));
+
 const HomePage = () => {
   return (
     <>
-      <Header />
       <SearchBox />
       <ShortCuts />
     </>
   );
 };
+
 export default HomePage;
