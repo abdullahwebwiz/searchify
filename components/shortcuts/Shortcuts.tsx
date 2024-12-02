@@ -18,7 +18,7 @@ const ImageBox = ({ d }: any) => (
         src={'/' + d.image + '.png'}
         width={100}
         height={100}
-        alt='icon'
+        alt='icon is here'
         className='transform transition-transform hover:scale-110'
       />
     </div>
