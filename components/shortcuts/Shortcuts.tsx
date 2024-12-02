@@ -24,11 +24,8 @@ const ImageBox = ({ d }: any) => (
     </div>
   </Link>
 );
-            
 
-
-
-const ImageGallery: React.FC = () => (
+const ImageGallery: any = () => (
   <div className='flex items-center justify-center space-x-4'>
     {data.map((d: any, index: any) => (
       <ImageBox key={index} d={d} />
