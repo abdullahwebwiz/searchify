@@ -5,7 +5,7 @@ const data = [
   { link: 'https://amazon.com', image: 'amazon' },
   { link: 'https://facebook.com', image: 'facebook' },
   { link: 'https://youtube.com', image: 'youtube2' },
-  { link: 'https://chatgpt.com', image: 'chatGPT' },
+  { link: 'https://chatgpt.com', image: 'chatgpt' },
 ];
 const ImageBox = ({ d }: any) => (
   <Link
@@ -24,6 +24,9 @@ const ImageBox = ({ d }: any) => (
     </div>
   </Link>
 );
+            
+
+
 
 const ImageGallery: React.FC = () => (
   <div className='flex items-center justify-center space-x-4'>
