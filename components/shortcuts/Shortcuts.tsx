@@ -4,8 +4,7 @@ const data = [
   { link: 'https://instagram.com', image: 'instagram' },
   { link: 'https://amazon.com', image: 'amazon' },
   { link: 'https://facebook.com', image: 'facebook' },
-  { link: 'https://youtube.com', image: 'youtube2' },
-  { link: 'https://chatgpt.com', image: 'chatgpt' },
+  { link: 'https://youtube.com', image: 'youtube2' }
 ];
 const ImageBox = ({ d }: any) => (
   <Link
