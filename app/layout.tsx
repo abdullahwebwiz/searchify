@@ -11,7 +11,8 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' });
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_APP_NAME,
   description: process.env.NEXT_PUBLIC_APP_DESC,
-};
+};              
+
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
